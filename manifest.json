@@ -1,0 +1,24 @@
+{
+  "name": "CPN – Secured by Bitcoin",
+  "short_name": "CPN",
+  "description": "CPN – BTC-backed token. Live reserves, transparency, and community-driven value.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFA500",
+  "theme_color": "#FFA500",
+
+  "icons": [
+    {
+      "src": "cpn-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon-64-transparent.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}
