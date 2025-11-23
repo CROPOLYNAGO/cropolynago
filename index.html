@@ -56,9 +56,14 @@
       margin-top: 15px;
       font-size: 0.95rem;
     }
-    .minief7a4c27427dbDFE4F7597c-icon {
-      width: 24px;
-      height: 24px;
+    .wallet-btn {
+      padding: 10px 18px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
     }
     #disclaimer {
       text-align: center;
@@ -78,9 +83,7 @@
       color: #000;
       z-index: 1000;
     }
-    a {
-      color: #000;
-    }
+    a { color: #000; }
   </style>
 </head>
 <body>
@@ -88,6 +91,18 @@
     <img src="cpn_logo_transparent.png" alt="CPN Logo">
     <h1>CPN – Secured by Bitcoin</h1>
   </header>
+
+  <section>
+    <h2>CPN Wallet Tracking</h2>
+    <div id="wallet-address">Wallet: 3FJbqwjZjco6G3naKgFSEimT7pJpvz3FAL7vUBgrCxrj</div>
+    <div id="wallet-cpn">CPN Wallet Balance: Loading...</div>
+  </section>
+
+  <section>
+    <h2>Liquidity Pool (Raydium)</h2>
+    <p>CPN im LP:</p>
+    <div id="lp-cpn">Loading...</div>
+  </section>
 
   <section>
     <h2>Proof of Value</h2>
@@ -106,107 +121,73 @@
     <p>CPN1zkBz7VsTALmPfckM6pULDMeEPJCMUaDobWinkMnc</p>
   </section>
 
-  <section id="tokenomics">
-    <h2><img src="favicon-64-transparent.png" class="minief7a4c27427dbDFE4F7597c-icon" />Tokenomics</h2>
-    <div class="toggle-content">
-      <ul> 
-        <p><strong>Total Supply: 1 Billon CPN</strong></p>
-        <p><strong>21 Million CPN reserved for the future CPN blockchain – mining only</strong></p>
-        <p><strong>Purpose: organic growth, fair access, long-term BTC-backed value</strong></p>
-
-        <ul>
-          <p><strong>5% Transaction Fee</strong></p>
-          <p><strong>Dedicated to building the BTC reserve and rewarding community</strong></p>
-          <ul>
-            <li>20% distributed to CPN holders daily via staking in cBTC</li>
-            <li>80% added to the BTC reserve, swapped to real BTC when threshold is reached</li>
-            <li>Ensures all CPN holders benefit and the reserve grows securely</li>
-          </ul>
-
-          <p><strong>Mining & Node Rewards</strong></p>
-          <ul>
-            <li>21 Million CPN on chain must be mined</li>
-            <li>Node operators validate blocks and secure the network</li>
-            <li>Stakers unlock rewards via cBTC – BTC remains in the system permanently</li>
-            <li>No burn, all actions fully auditable and transparent</li>
-          </ul>
-
-          <p><strong>Redemption (via cBTC)</strong></p>
-          <ul>
-            <li>CPN → BTC through cBTC, permanently locked in reserve</li>
-            <li>Stakers receive rewards from cBTC without touching original BTC</li>
-          </ul>
-
-          <p><strong>No Promises – Real Value Floor</strong></p>
-          <ul>
-            <li>CPN is a community token, fully backed by BTC reserve</li>
-            <li>No financial guarantees</li>
-          </ul>
-
-          <p style="color: #fff;"><em>Born as a meme. Backed by BTC. Secured for the community.</em></p>
-        </ul>
-    </div>
-  </section>
-
-  <section id="whitepaper">
-    <h2><img src="favicon-64-transparent.png" class="minief7a4c27427dbDFE4F7597c-icon" />Whitepaper</h2>
-    <div class="toggle-content">
-      <p><strong>Introduction:</strong><br>
-      CPN started as a meme coin but is built with a serious long-term vision: a BTC-backed, community-driven ecosystem. The BTC reserve is permanently locked within the system, and the CPN blockchain ensures transparent, decentralized value coverage.</p>
-
-      <p><strong>No Central Company:</strong><br>
-      Fully decentralized – no freezing, censorship, or control by a central entity. Node operators and stakers maintain the network.</p>
-
-      <p><strong>cBTC – Wrapped BTC:</strong><br>
-      The BTC reserve is represented on chain via cBTC. Stakers unlock rewards through cBTC, while original BTC remain untouchable. This provides secure, auditable rewards without risk to the reserve.</p>
-
-      <p><strong>Mining & Staking:</strong><br>
-      21 Million CPN on the chain must be mined by community nodes. Node operators validate blocks and earn CPN. Stakers earn rewards via cBTC, contributing to the BTC reserve’s growth.</p>
-
-      <p><strong>Proof of Value (PoV):</strong><br>
-      Each CPN is backed by BTC. The system grows sustainably through mining, staking, and the 5% fee dedicated to reserve building and community rewards.</p>
-    </div>
-  </section>
-
-  <section id="vision">
-    <h2><img src="favicon-64-transparent.png" class="minief7a4c27427dbDFE4F7597c-icon" />Blockchain Vision</h2>
-    <div class="toggle-content">
-      <p>CPN’s vision is to keep BTC in the hands of the community. By creating scarcity and permanently locking BTC into the system, whales cannot easily acquire them. This generates demand for CPN and rewards the community continuously through BTC.</p>
-      <p>The ecosystem ensures that every participant benefits sustainably: node operators and stakers earn CPN and cBTC rewards while contributing to network security and reserve growth.</p>
-    </div>
-  </section>
-
-  <section id="faq">
-    <h2><img src="favicon-64-transparent.png" class="minief7a4c27427dbDFE4F7597c-icon" />FAQ</h2>
-    <div class="toggle-content">
-      <ul>
-        <li><strong>Is CPN a financial product?</strong> No.</li>
-        <li><strong>How is the BTC reserve verified?</strong> Publicly via explorer.</li>
-        <li><strong>Can I redeem CPN for BTC?</strong> Yes, via cBTC on the CPN chain.</li>
-      </ul>
-    </div>
-  </section>
-
   <div id="disclaimer">
     <strong>Disclaimer:</strong>
-    <p><strong>CPN is not a financial product, security, or investment vehicle.</strong></p>
-    <p>All addresses and balances are for demonstration and entertainment purposes only.</p>
+    <p><strong>CPN ist kein Finanzprodukt.</strong></p>
   </div>
 
-  <footer>
-    &copy; 2025 CROPOLYNAGO. Powered by Bitcoin scarcity.<br>
-    <a href="https://x.com/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; text-decoration: none; color: #000;">
-      <img src="x-logo.png" alt="X (Twitter)" style="width: 20px; height: 20px;" />
-    </a>
-  </footer>
+  <footer>&copy; 2025 CROPOLYNAGO.</footer>
 
   <script>
+    const CPN_MINT = "3FJbqwjZjco6G3naKgFSEimT7pJpvz3FAL7vUBgrCxrj";
+    const RAY_AMM_ID = "BRS7tWCALcNBwWJerk5fDCCmmgCBMQQBASo4dMRJUCqs";
+
     document.querySelectorAll('section h2').forEach(header => {
       header.addEventListener('click', () => {
         const content = header.nextElementSibling;
         content.style.display = content.style.display === 'block' ? 'none' : 'block';
       });
     });
+
+        }
+
+    async function fetchTrackedCPN() {
+      const wallet = "3FJbqwjZjco6G3naKgFSEimT7pJpvz3FAL7vUBgrCxrj";
+      const body = {
+        jsonrpc: "2.0",
+        id: 1,
+        method: "getTokenAccountsByOwner",
+        params: [wallet, { mint: CPN_MINT }, { encoding: "jsonParsed" }]
+      };
+      try {
+        const res = await fetch("https://api.mainnet-beta.solana.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        let balance = 0;
+        if (data.result && data.result.value.length > 0) {
+          const info = data.result.value[0].account.data.parsed.info.tokenAmount;
+          balance = info.amount / Math.pow(10, info.decimals);
+        }
+        document.getElementById("wallet-cpn").innerText = `CPN Wallet Balance: ${balance}`;
+      } catch (e) {
+        document.getElementById("wallet-cpn").innerText = "Unavailable";
+      }
+    }
+
+      document.getElementById("wallet-cpn").innerText = `CPN Wallet Balance: ${balance}`;
+    }
+
+    async function fetchTrackedCPN();
+    fetchRayLP() {
+      try {
+        const res = await fetch("https://api.raydium.io/v2/sdk/liquidity/mainnet/pools");
+        const pools = await res.json();
+        const pool = pools.find(p => p.id === RAY_AMM_ID);
+
+        if (!pool) {
+          document.getElementById("lp-cpn").innerText = "Pool not found";
+          return;
+        }
+
+        const amount = pool.baseMint === CPN_MINT ? pool.baseVaultBalance : pool.quoteVaultBalance;
+        document.getElementById("lp-cpn").innerText = amount;
+      } catch (e) {
+        document.getElementById("lp-cpn").innerText = "Error";
+      }
+    }
 
     async function fetchBTCBalance() {
       const btcAddress = "bc1qr4dl5wa7kl8yu792dceg9z5knl2gkn220lk7a9";
@@ -220,23 +201,18 @@
           document.getElementById("btc-balance").innerText = "Unavailable";
         }
       } catch (e) {
-        console.error("BTC Fetch Error:", e);
         document.getElementById("btc-balance").innerText = "Unavailable";
       }
     }
 
     async function fetchSolCPNBalance() {
-      const wallet = "3FJbqwjZjco6G3naKgFSEimT7pJpvz3FAL7vUBgrCxrj";
-      const mint = "3FJbqwjZjco6G3naKgFSEimT7pJpvz3FAL7vUBgrCxrj";
+      const wallet = CPN_MINT;
+      const mint = CPN_MINT;
       const body = {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "getTokenAccountsByOwner",
-        "params": [
-          wallet,
-          { "mint": mint },
-          { "encoding": "jsonParsed" }
-        ]
+        jsonrpc: "2.0",
+        id: 1,
+        method: "getTokenAccountsByOwner",
+        params: [wallet, { mint: mint }, { encoding: "jsonParsed" }]
       };
 
       try {
@@ -259,6 +235,7 @@
 
     fetchBTCBalance();
     fetchSolCPNBalance();
+    fetchRayLP();
   </script>
 </body>
 </html>
