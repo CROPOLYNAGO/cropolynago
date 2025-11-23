@@ -98,12 +98,12 @@
   <section>
     <h2>CPN Supply</h2>
     <p>Live CPN Tokens:</p>
-    <div id="cpn-balance">Loading CPN token balance...</div>
+    <div id="cpn-balance">0 CPN</div>
   </section>
 
   <section>
     <h2>CPN Token Address</h2>
-    <p>8h8T2UpyU9W2dDEwYyVPXRXenzWuQNoqMkxZ2HrtHasF</p>
+    <p>CPN1zkBz7VsTALmPfckM6pULDMeEPJCMUaDobWinkMnc</p>
   </section>
 
   <section id="tokenomics">
@@ -187,10 +187,21 @@
     </div>
   </section>
 
-  <div id="disclaimer">
-    <strong>Disclaimer:</strong>
-    <p><strong>CPN is not a financial product, security, or investment vehicle.</strong></p>
-    <p>All addresses and balances are for demonstration and entertainment purposes only.</p>
+ <div id="disclaimer">
+    <strong>Disclaimer:</strong> 
+    <p><strong>CPN is not a financial product, security, or investment vehicle.</strong></p> 
+    <p>Notice: All cryptocurrency addresses, account balances, token balances, or other information displayed on this website are provided solely for <strong>demonstration and entertainment purposes</strong>.</p>
+    <p>they are not real, not guaranteed, and must not be considered reliable financial information.</p>
+    <p>In particular:</p>
+    <p>No content on this website constitutes financial advice, investment recommendation, or legal counsel.</p>
+    <p>The displayed wallet addresses and balances may be fictional, simulated, or taken from third parties.</p>
+    <p>Users may not derive any claims to actual funds, tokens, or services from this information.</p>
+    <p>Cryptocurrencies are high-risk and volatile. Any interaction, decision, or transaction based on information from this website is undertaken at your own risk.</p>
+    <p>This website and its content are for informational and entertainment purposes only. Nothing on this site constitutes financial advice, investment recommendations, or legal counsel of any kind.</p>
+    <p>cropolynago was launched as a meme coin and should be understood as a high-risk, experimental project with no guarantees or promises of value, utility, or future performance.</p> 
+    <p>Purchasing, holding, or interacting with CPN tokens is done at your own risk. The project is community-driven and operates without a central company, administrator, or legal entity.</p> 
+    <p>Cryptocurrency markets are volatile, and digital assets can lose their value entirely. You are solely responsible for your decisions and outcomes.</p>
+    <p>Always do your own research (DYOR) and consult a licensed financial advisor before making any investment-related choices.</p>
   </div>
 
   <footer>
@@ -225,40 +236,42 @@
       }
     }
 
-    async function fetchSolCPNBalance() {
-      const wallet = "h94Qc7kboXBSNADxPr74W9fUr3HXRV9ADd1DGDESKX8";
-      const mint = "8h8T2UpyU9W2dDEwYyVPXRXenzWuQNoqMkxZ2HrtHasF";
+    async function fetchRaydiumCPNBalance() {
+      const ammId = "BRS7tWCALcNBwWJerk5fDCCmmgCBMQQBASo4dMRJUCqs";
+      const url = "https://api.mainnet-beta.solana.com";
       const body = {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "getTokenAccountsByOwner",
-        "params": [
-          wallet,
-          { "mint": mint },
-          { "encoding": "jsonParsed" }
+        jsonrpc: "2.0",
+        id: 1,
+        method: "getAccountInfo",
+        params: [
+          ammId,
+          { encoding: "jsonParsed" }
         ]
       };
 
       try {
-        const res = await fetch("https://api.mainnet-beta.solana.com", {
+        const res = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
         const data = await res.json();
         let balance = 0;
-        if (data.result && data.result.value.length > 0) {
-          const info = data.result.value[0].account.data.parsed.info.tokenAmount;
+
+        if (data.result?.value?.data?.parsed?.info?.tokenAmount) {
+          const info = data.result.value.data.parsed.info.tokenAmount;
           balance = info.amount / Math.pow(10, info.decimals);
         }
+
         document.getElementById("cpn-balance").innerText = `${balance} CPN`;
       } catch (e) {
+        console.error("Raydium Fetch Error:", e);
         document.getElementById("cpn-balance").innerText = "Unavailable";
       }
     }
 
     fetchBTCBalance();
-    fetchSolCPNBalance();
+    fetchRaydiumCPNBalance();
   </script>
 </body>
 </html>
